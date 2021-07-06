@@ -83,7 +83,7 @@ rm -rf /webapps/ROOT*
 
 #Copy war from download directory
 cp $warDir/$warName webapps/
-sleep 4
+sleep 5
 
 #Rename war
 mv webapps/$warName webapps/ROOT.war
