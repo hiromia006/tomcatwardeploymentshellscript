@@ -30,7 +30,7 @@ rm -rf oldWarBackup/*.war
 read -p 'War Path Only: ' warPath
 warName=${warPath##*/}
 echo "$warName"
-echo "scp username@IO:${warPath} ."
+echo "scp username@IP:${warPath} ."
 scp username@IP:${warPath} .
 
 if [ -e $warName ]
@@ -40,7 +40,7 @@ else
     echo "Please download again"
 fi
 
-tomcatHomeDir=/bits/sbicloud/tomcat
+tomcatHomeDir=/user/tomcat
 tomcatInstanceName=${tomcatHomeDir##*/}
 cd $tomcatHomeDir
 echo "The current directory is : $(pwd)"
