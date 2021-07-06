@@ -56,9 +56,9 @@ ps -ef | grep $tomcatInstanceName | grep -v grep | awk '{print $2}' | xargs kill
 # Store redis information to clean it.
 cd lib/
 echo "The current directory is : $(pwd)"
-redisPort=cat sconfig.properties | grep "redis.port" | cut -d'=' -f2
-redisHostName=cat sconfig.properties | grep "redis.hostName" | cut -d'=' -f2
-redisPassword=cat sconfig.properties | grep "redis.password" | cut -d'=' -f2
+redisPort=cat config.properties | grep "redis.port" | cut -d'=' -f2
+redisHostName=cat config.properties | grep "redis.hostName" | cut -d'=' -f2
+redisPassword=cat config.properties | grep "redis.password" | cut -d'=' -f2
 
 if [ "$redisPassword" != "" ]; then
  redisCachedStatus=$(redis-cli -h redisHostName -p redisPort -a redisPassword FLUSHALL)
@@ -83,7 +83,7 @@ rm -rf /webapps/ROOT*
 
 #Copy war from download directory
 cp $warDir/$warName webapps/
-sleep 5
+sleep 4
 
 #Rename war
 mv webapps/$warName webapps/ROOT.war
